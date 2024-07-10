@@ -31,3 +31,16 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+
+class Appointment(models.Model):
+    name=models.CharField(max_length=200)
+    date=models.CharField(max_length=200)
+    doctor=models.CharField(max_length=200)
+    email=models.EmailField()
+    department=models.CharField(max_length=200)
+    message=models.TextField()
+    phone=models.CharField(max_length=10)
+    def __str__(self):
+        return self.name
+
+

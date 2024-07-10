@@ -1,5 +1,7 @@
 from django.shortcuts import render,redirect
 from medicioapp.models import Contact
+from medicioapp.models import Branch
+from medicioapp.models import Appointment
 
 # Create your views here.
 def index(request):
@@ -33,6 +35,43 @@ def contacts(request):
 
     else:
         return render(request,'contact.html')
+
+
+
+def branch(request):
+    if request.method == "POST":
+        all = Branch(name=request.POST['name'],
+                      email=request.POST['email'],
+
+                      manager=request.POST['manager'],
+                     contact=request.POST['contact'],
+                      )
+
+        all.save()
+        return redirect('/branch')
+
+    else:
+        return render(request, 'branchform.html')
+
+
+def appointment(request):
+    if request.method == "POST":
+        all = Appointment(name=request.POST['name'],
+                        email=request.POST['email'],
+                          date=request.POST['manager'],
+                     department=request.POST['contact'],
+                          doctor=request.POST['doctor'],
+                          message=request.POST['message'],
+                          phone=request.POST['phone'],
+
+                     )
+
+        all.save()
+        return redirect('/appointment')
+
+    else:
+        return render(request, 'appointment.html')
+
 
 
 
