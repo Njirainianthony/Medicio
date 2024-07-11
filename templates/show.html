@@ -1,0 +1,41 @@
+{% extends 'inner-page.html' %}
+{% load static %}
+
+{% block body %}
+    <br><br><br>
+<table class="table container">
+
+<tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Doctor</th>
+    <th>Email</th>
+    <th>Department</th>
+    <th>Message</th>
+    <th>Phone</th>
+    <th>Action</th>
+</tr>
+
+{% for appointment in data %}
+
+    <tr>
+        <td>{{ appointment.name }}</td>
+        <td>{{ appointment.date }}</td>
+        <td>{{ appointment.doctor }}</td>
+        <td>{{ appointment.email }}</td>
+        <td>{{ appointment.department }}</td>
+        <td>{{ appointment.message }}</td>
+        <td>{{ appointment.phone }}</td>
+    <td>
+        <a href="/edit/{{ appointment.id }}" class="btn btn-warning">Edit</a>
+        <a href="/delete/{{ appointment.id }}" class="btn btn-danger">Delete</a>
+    </td>
+    </tr>
+
+{% endfor %}
+
+
+</table>
+
+
+{% endblock %}
