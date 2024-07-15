@@ -84,7 +84,7 @@
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'contacts' %}">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -105,6 +105,7 @@
         <!-- Slide 1 -->
         <div class="carousel-item active" style="background-image: url({% static 'assets/img/slide/slide-1.jpg' %})">
           <div class="container">
+              <h3 class="text-success">Hello {{ members.username }}</h3>
             <h2>Welcome to <span>Medicio</span></h2>
             <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel.</p>
             <a href="#about" class="btn-get-started scrollto">Read More</a>
@@ -114,6 +115,7 @@
         <!-- Slide 2 -->
         <div class="carousel-item" style="background-image: url({% static 'assets/img/slide/slide-2.jpg' %})">
           <div class="container">
+              <h3 class="text-success">Hello {{ members.username }}</h3>
             <h2>Lorem Ipsum Dolor</h2>
             <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel.</p>
             <a href="#about" class="btn-get-started scrollto">Read More</a>
@@ -123,6 +125,7 @@
         <!-- Slide 3 -->
         <div class="carousel-item" style="background-image: url({% static 'assets/img/slide/slide-3.jpg' %})">
           <div class="container">
+              <h3 class="text-success">Hello {{ members.username }}</h3>
             <h2>Sequi ea ut et est quaerat</h2>
             <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel.</p>
             <a href="#about" class="btn-get-started scrollto">Read More</a>
@@ -152,6 +155,7 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><i class="fas fa-heartbeat"></i></div>
+
               <h4 class="title"><a href="">Lorem Ipsum</a></h4>
               <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
             </div>

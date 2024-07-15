@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from medicioapp.models import Contact
 from medicioapp.models import Branch
-from medicioapp.models import Appointment,Product
+from medicioapp.models import Appointment,Product,Member
 from medicioapp.forms import AppointmentForm
 
 
@@ -9,7 +9,18 @@ from medicioapp.forms import AppointmentForm
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    if request.method == 'POST':
+        if Member.objects.filter(username=request.POST['username'],
+                                 password=request.POST['password']
+                                 ).exists():
+            members=Member.objects.get(username=request.POST['username'],
+                                        password=request.POST['password'])
+            return render(request,'index.html',{'members':members})
+        else:
+            return render(request,'login.html')
+
+    else:
+        return render(request,'login.html')
 
 
 def innerpage(request):
@@ -102,8 +113,8 @@ def edit(request,id):
 
 def update(request,id):
     if request.method == "POST":
-        appointment=Appointment.objects.get(id=id)
-        form=AppointmentForm(request.POST,instance=appointment)
+        appoint=Appointment.objects.get(id=id)
+        form=AppointmentForm(request.POST,instance=appoint)
         if form.is_valid():
             form.save()
             return redirect('/show')
@@ -117,8 +128,22 @@ def update(request,id):
 
 
 def register(request):
-    return render(request,'register.html')
+    if request.method == "POST":
+        members=Member(name=request.POST['name'],
+                       username=request.POST['username'],
+                       password=request.POST['password'],
+                       )
+
+        members.save()
+        return redirect('/login')
+
+    else:
+        return render(request, 'register.html')
+
+
 
 
 def login(request):
     return render(request,'login.html')
+
+
