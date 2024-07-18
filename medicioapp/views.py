@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from medicioapp.models import Contact
 from medicioapp.models import Branch
-from medicioapp.models import Appointment,Product,Member
-from medicioapp.forms import AppointmentForm
+from medicioapp.models import Appointment,Product,Member,ImageModel
+from medicioapp.forms import AppointmentForm,ImageUploadForm
 
 
 
@@ -145,5 +145,26 @@ def register(request):
 
 def login(request):
     return render(request,'login.html')
+
+
+
+def upload_image(request):
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/showimage')
+    else:
+        form = ImageUploadForm()
+    return render(request, 'upload.html', {'form': form})
+
+def show_image(request):
+    images = ImageModel.objects.all()
+    return render(request, 'showimages.html', {'images': images})
+
+def imagedelete(request, id):
+    image = ImageModel.objects.get(id=id)
+    image.delete()
+    return redirect('/showimage')
 
 

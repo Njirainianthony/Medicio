@@ -55,3 +55,20 @@ class Member(models.Model):
 
     def __str__(self):
         return self.name
+
+class ImageModel(models.Model):
+    image = models.ImageField(upload_to='images/')
+    title = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.title
+
+
+
+class Admin(models.Model):
+    username = models.CharField(max_length=200)
+    password = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.username
